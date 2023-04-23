@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommendations</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #6ab4df;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    img {
+      max-height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    Poster Page
+  </h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Poster</th>
+    </tr>
+    {% for title,imdb_url,url in posters %}
+    <tr>
+      <td><a href={{imdb_url}} target="_blank">{{title}}</a></td>
+      <td><a href={{url}} target="_blank"><img src={{url}}></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action="{{ referrer }}" method="GET">
+    <button type="submit">Return to Recommendation</button>
+  </form>
+  <!-- <a href="{{ referrer }}">Back</a> -->
+  <form action="/" method="GET">
+    <button type="submit">Return to Home Page</button>
+  </form>
+  <form action="/logout" method="GET">
+    <button type="submit">Exit</button>
+  </form> 
+</body>
+
+</html>

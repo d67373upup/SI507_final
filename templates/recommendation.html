@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #6ab4df;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Movie Recommendations</h1>
+    <h2>Results:</h2>
+    {% if recommendations %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Actors</th>
+                <th>Genre</th>
+                <th>Rated</th>
+                <th>Average Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in recommendations %}
+            <tr>
+                <td><a href="{{ movie['imdb_url'] }}" target="_blank">{{ movie['title'] }}</a></td>
+                <td>{{ movie['director'] }}</td>
+                <td>{{ movie['actor']|join('') }}</td>
+                <td>{{ movie['genre']|join('') }}</td>
+                <td>{{ movie['rated'] }}</td>
+                <td>{{ movie['average_rating'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <form action="/plot" method="GET">
+        <button type="submit">View Average Ratings Plot</button>
+    </form>
+    <form action="/poster" method="GET">
+        <button type="submit">View Poster Page</button>
+    </form>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+    <br>
+    <form action="/" method="GET">
+        <button type="submit">Return to Home Page</button>
+    </form>
+    <form action="/logout" method="GET">
+        <button type="submit">Exit</button>
+    </form>
+</body>
+
+</html>

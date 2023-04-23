@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Recommendations Plot</title>
+</head>
+
+<body>
+    <h1>Movie Recommendations Plot</h1>
+    <div>
+        {{ plot_html|safe }}
+    </div>
+    <form action="{{ referrer }}" method="GET">
+        <button type="submit">Return to Recommendation</button>
+    </form>
+    <!-- <a href="{{ referrer }}">Back</a> -->
+
+    <form action="/" method="GET">
+        <button type="submit">Return to Home Page</button>
+    </form>
+    <form action="/logout" method="GET">
+        <button type="submit">Exit</button>
+    </form>
+</body>
+
+</html>
