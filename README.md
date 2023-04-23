@@ -21,7 +21,7 @@ search the information from OMDB.
 4. Have fun!
 
 ## Data Structure
-The code defines four graphs, each based on a different movie criteria: director, actor, genre, and rating. Each graph is represented as a Python dictionary, with keys representing the category (e.g. director name or genre type) and values representing a list of movies that fit that category.
+The code defines four graphs, each based on a different movie criteria: director, actor, genre, and rating. Each graph is represented as a Python dictionary, with keys representing the category (e.g. director name or genre type) and values representing a list of movies that fit that category. At the same time, I created four corresponding cache file named: actor_graph.json, genre_graph.json, director_graph.json, and rated_graph.json. These cache file would allow user access the data offline just in case.
 
 The 'create_movie_graph' function is used to create the graphs, by iterating over the list of movies and extracting the relevant category information for each movie. For example, for the director graph, it iterates over the movies and extracts the director's name, then adds the movie to the list for that director's name in the graph dictionary. The resulting graph is then sorted by average rating using the 'get_rating' function and returned.
 
